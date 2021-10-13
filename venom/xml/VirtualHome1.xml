@@ -1,0 +1,43 @@
+<root>
+  <info>
+    <length>2</length>
+    <width>2</width>
+    <chargingBaseIDX>1</chargingBaseIDX>
+    <chargingBaseIDY>0</chargingBaseIDY>
+  </info>
+
+  <cells>
+    <cell id="0,0">
+      <floorLevel>0</floorLevel>
+      <dirtLevel>0</dirtLevel>
+      <northBorder>OPEN</northBorder>
+      <southBorder>OBSTACLE</southBorder>
+      <eastBorder>OPEN</eastBorder>
+      <westBorder>OBSTACLE</westBorder>
+    </cell>
+    <cell id="1,0">
+      <floorLevel>0</floorLevel>
+      <dirtLevel>0</dirtLevel>
+      <northBorder>OPEN</northBorder>
+      <southBorder>OBSTACLE</southBorder>
+      <eastBorder>OBSTACLE</eastBorder>
+      <westBorder>OPEN</westBorder>
+    </cell>
+    <cell id="0,1">
+      <floorLevel>0</floorLevel>
+      <dirtLevel>0</dirtLevel>
+      <northBorder>OBSTACLE</northBorder>
+      <southBorder>OPEN</southBorder>
+      <eastBorder>OPEN</eastBorder>
+      <westBorder>OBSTACLE</westBorder>
+    </cell>
+    <cell id="1,1">
+      <floorLevel>0</floorLevel>
+      <dirtLevel>0</dirtLevel>
+      <northBorder>OBSTACLE</northBorder>
+      <southBorder>OPEN</southBorder>
+      <eastBorder>OBSTACLE</eastBorder>
+      <westBorder>OPEN</westBorder>
+    </cell>
+  </cells>
+</root>
