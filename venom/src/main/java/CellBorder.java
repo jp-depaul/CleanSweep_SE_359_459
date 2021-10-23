@@ -1,1 +1,0 @@
-public enum CellBorder { UNKNOWN, OBSTACLE, OPEN, STAIRS, OPEN_DOOR, CLOSED_DOOR }

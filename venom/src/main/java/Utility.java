@@ -1,14 +1,14 @@
 public class Utility {
-  public static Direction getOppositeDirection(Direction direction) {
-    switch (direction) {
+  public static Dir getOppositeDirection(Dir dir) {
+    switch (dir) {
       case NORTH:
-        return Direction.SOUTH;
+        return Dir.SOUTH;
       case SOUTH:
-        return Direction.NORTH;
+        return Dir.NORTH;
       case EAST:
-        return Direction.WEST;
+        return Dir.WEST;
       case WEST:
-        return Direction.EAST;
+        return Dir.EAST;
     }
     return null;
   }

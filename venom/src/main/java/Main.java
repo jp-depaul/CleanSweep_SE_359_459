@@ -1,28 +1,22 @@
-import javax.xml.parsers.ParserConfigurationException;
-
 public class Main {
 
   public static void main(String[] args) {
-    VirtualHome virtualHome = null;
+    VirtualFloor virtualFloor = null;
     Robot robot;
 
     // TODO: interpret args
-    String homeFilePath = "venom/xml/VirtualHome1.xml";
+    String homeFilePath = "venom/xml/FloorPlanA.xml";
 
-    // Create robot and virtual home
-    try {
-      virtualHome = new VirtualHome(homeFilePath);
-      robot = new Robot(virtualHome);
-    }
-    catch (Exception e) {
-      System.err.println("Could not load home file : " + e.getClass());
-    }
+    // Create virtual floor and robot
+    try { virtualFloor = new VirtualFloor(homeFilePath); }
+    catch (Exception e) { System.err.println("Could not load home file : " + e.getClass()); }
+    robot = virtualFloor.createRobot();
 
     // Test virtual room
-    virtualHome.printHomeSimple();
+    virtualFloor.printHomeSimple();
 
     // TODO: handle commands
-      // while()
+
   }
 
   public void mapFloor() {}
