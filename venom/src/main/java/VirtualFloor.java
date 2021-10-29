@@ -53,13 +53,13 @@ public class VirtualFloor {
               .item(0).getTextContent());
           int dirtLevel = Integer.parseInt(eElement.getElementsByTagName("dirtLevel")
               .item(0).getTextContent());
-          CellPath northPath = (CellPath.valueOf(eElement.getElementsByTagName("northPath")
+          CellBorder northPath = (CellBorder.valueOf(eElement.getElementsByTagName("northPath")
               .item(0).getTextContent()));
-          CellPath southPath = (CellPath.valueOf(eElement.getElementsByTagName("southPath")
+          CellBorder southPath = (CellBorder.valueOf(eElement.getElementsByTagName("southPath")
               .item(0).getTextContent()));
-          CellPath eastPath = (CellPath.valueOf(eElement.getElementsByTagName("eastPath")
+          CellBorder eastPath = (CellBorder.valueOf(eElement.getElementsByTagName("eastPath")
               .item(0).getTextContent()));
-          CellPath westPath = (CellPath.valueOf(eElement.getElementsByTagName("westPath")
+          CellBorder westPath = (CellBorder.valueOf(eElement.getElementsByTagName("westPath")
               .item(0).getTextContent()));
           cell[x][y] = new Cell(isStation, floorLevel, dirtLevel, northPath, southPath,
               eastPath, westPath);
@@ -76,9 +76,9 @@ public class VirtualFloor {
     return new Robot(this);
   }
 
-  public Cell scanCellAtOriginRelativePos(Point relativePos) {
+  public Cell getCellAtOriginRelativePos(Point relativePoint) {
     // returns copy, not ref
-    Point actualPos = originRelativePosToArrayPos(relativePos);
+    Point actualPos = originRelativePosToArrayPos(relativePoint);
     return new Cell(cell[actualPos.x][actualPos.y]);
   }
 
@@ -94,30 +94,6 @@ public class VirtualFloor {
     return x + xLength * y;
   }
 
-  /*
-  public void setPathTypeAtCellId(int id, Dir dir, CellPath type) {
-    switch (dir) {
-      case NORTH:
-        cell[x][y].setNorthPath(type);
-        break;
-      case SOUTH:
-        cell[x][y].setSouthPath(type);
-        break;
-      case EAST:
-        cell[x][y].setEastPath(type);
-        break;
-      case WEST:
-        cell[x][y].setWestPath(type);
-        break;
-    }
-  }
-  public void setFloorLevelAtCellId(int id, int floorLevel) {
-    cell[x][y].floorLevel = floorLevel;
-  }
-  public void setDirtLevelAtCellId(int id, int dirtLevel) {
-    cell[x][y].dirtLevel = dirtLevel;
-  }
-  */
 
   public void printHomeSimple() {
     System.out.println("=========================================================================");
@@ -125,17 +101,15 @@ public class VirtualFloor {
     System.out.println("Origin: " + origin.x + "," + origin.y);
     System.out.println("CELL ID, ARRAY POSITION, PATHS (in order of north, south, east, west)");
     System.out.println("=========================================================================");
-
-
     for (int y = 0; y <= yLength - 1; y++) {
       for (int x = 0; x <= xLength - 1; x++) {
         String out = "    ID=[";
         out += arrayPosToCellId(x, y) + "] POS=[";
         out += x + "," + y + "] PATH=[";
-        out += cell[x][y].getPath(Dir.NORTH) + ", ";
-        out += cell[x][y].getPath(Dir.SOUTH) + ", ";
-        out += cell[x][y].getPath(Dir.EAST) + ", ";
-        out += cell[x][y].getPath(Dir.WEST) + "]";
+        out += cell[x][y].border.get(Dir.NORTH) + ", ";
+        out += cell[x][y].border.get(Dir.SOUTH) + ", ";
+        out += cell[x][y].border.get(Dir.EAST) + ", ";
+        out += cell[x][y].border.get(Dir.WEST) + "]";
         System.out.println(out);
       }
     }

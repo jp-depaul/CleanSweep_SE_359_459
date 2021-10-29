@@ -12,15 +12,9 @@ public class Main {
     catch (Exception e) { System.err.println("Could not load home file : " + e.getClass()); }
     robot = virtualFloor.createRobot();
 
-    // Test virtual room
-    virtualFloor.printHomeSimple();
-
-    // TODO: handle commands
+    // Test floor discovery
+    robot.mapFloor();
 
   }
-
-  public void mapFloor() {}
-
-  public void cleanFloor() {}
 
 }

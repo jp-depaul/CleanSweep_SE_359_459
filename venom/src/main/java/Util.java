@@ -1,5 +1,5 @@
-public class Utility {
-  public static Dir getOppositeDirection(Dir dir) {
+public class Util {
+  public static Dir reverseDir(Dir dir) {
     switch (dir) {
       case NORTH:
         return Dir.SOUTH;
@@ -10,7 +10,7 @@ public class Utility {
       case WEST:
         return Dir.EAST;
     }
-    return null;
+    return Dir.NORTH;
   }
 
 }
