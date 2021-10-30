@@ -13,8 +13,10 @@ public class Main {
     robot = virtualFloor.createRobot();
 
     // Test floor discovery
+    System.out.println("Mapping...");
     robot.mapFloor();
-
+    System.out.println("\nCleaning...");
+    robot.cleanFloor();
   }
 
 }

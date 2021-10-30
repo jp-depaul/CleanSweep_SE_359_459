@@ -6,15 +6,17 @@ portal/cleanSweepPortal.java
  portal.cleanSweepPortal
 portal/HelloWorld.java
  portal.HelloWorld
-Cell.java
- Cell
+Util.java
+ Util
+ Util$1
 CellBorder.java
  CellBorder
 portal/userName.java
  portal.userName
-Util.java
- Util
- Util$1
+Cell.java
+ Cell
+Logger.java
+ Logger
 Main.java
  Main
 Robot.java

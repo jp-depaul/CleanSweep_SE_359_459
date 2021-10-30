@@ -11,6 +11,8 @@ public class VirtualFloor {
   private Cell[][] cell;
   private Point origin;
 
+  // TODO: check no floor values = 0
+
   public VirtualFloor(String path) throws ParserConfigurationException, IOException, SAXException {
     // load room
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -53,13 +55,13 @@ public class VirtualFloor {
               .item(0).getTextContent());
           int dirtLevel = Integer.parseInt(eElement.getElementsByTagName("dirtLevel")
               .item(0).getTextContent());
-          CellBorder northPath = (CellBorder.valueOf(eElement.getElementsByTagName("northPath")
+          CellBorder northPath = (CellBorder.valueOf(eElement.getElementsByTagName("northBorder")
               .item(0).getTextContent()));
-          CellBorder southPath = (CellBorder.valueOf(eElement.getElementsByTagName("southPath")
+          CellBorder southPath = (CellBorder.valueOf(eElement.getElementsByTagName("southBorder")
               .item(0).getTextContent()));
-          CellBorder eastPath = (CellBorder.valueOf(eElement.getElementsByTagName("eastPath")
+          CellBorder eastPath = (CellBorder.valueOf(eElement.getElementsByTagName("eastBorder")
               .item(0).getTextContent()));
-          CellBorder westPath = (CellBorder.valueOf(eElement.getElementsByTagName("westPath")
+          CellBorder westPath = (CellBorder.valueOf(eElement.getElementsByTagName("westBorder")
               .item(0).getTextContent()));
           cell[x][y] = new Cell(isStation, floorLevel, dirtLevel, northPath, southPath,
               eastPath, westPath);
@@ -76,10 +78,15 @@ public class VirtualFloor {
     return new Robot(this);
   }
 
-  public Cell getCellAtOriginRelativePos(Point relativePoint) {
+  public Cell getCellCopyFromOriginRelativePoint(Point relativePoint) {
     // returns copy, not ref
     Point actualPos = originRelativePosToArrayPos(relativePoint);
     return new Cell(cell[actualPos.x][actualPos.y]);
+  }
+
+  public void cleanCellAtOriginRelativePoint(Point relativePoint) {
+    Point actualPos = originRelativePosToArrayPos(relativePoint);
+    cell[actualPos.x][actualPos.y].clean();
   }
 
   private Point originRelativePosToArrayPos(Point relativePos) {

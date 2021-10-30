@@ -9,137 +9,137 @@
     <cell id="0">
       <isStation>false</isStation>
       <floorLevel>1</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>OPEN</northPath>
-      <southPath>OBSTACLE</southPath>
-      <eastPath>OBSTACLE</eastPath>
-      <westPath>OBSTACLE</westPath>
+      <dirtLevel>2</dirtLevel>
+      <northBorder>OPEN</northBorder>
+      <southBorder>OBSTACLE</southBorder>
+      <eastBorder>OBSTACLE</eastBorder>
+      <westBorder>OBSTACLE</westBorder>
     </cell>
     <cell id="1">
       <isStation>false</isStation>
       <floorLevel>1</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>OBSTACLE</northPath>
-      <southPath>OBSTACLE</southPath>
-      <eastPath>OPEN</eastPath>
-      <westPath>OBSTACLE</westPath>
+      <dirtLevel>2</dirtLevel>
+      <northBorder>OBSTACLE</northBorder>
+      <southBorder>OBSTACLE</southBorder>
+      <eastBorder>OPEN</eastBorder>
+      <westBorder>OBSTACLE</westBorder>
     </cell>
     <cell id="2">
       <isStation>false</isStation>
       <floorLevel>1</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>OPEN</northPath>
-      <southPath>OBSTACLE</southPath>
-      <eastPath>OPEN</eastPath>
-      <westPath>OPEN</westPath>
+      <dirtLevel>2</dirtLevel>
+      <northBorder>OPEN</northBorder>
+      <southBorder>OBSTACLE</southBorder>
+      <eastBorder>OPEN</eastBorder>
+      <westBorder>OPEN</westBorder>
     </cell>
     <cell id="3">
       <isStation>false</isStation>
       <floorLevel>1</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>OPEN</northPath>
-      <southPath>OBSTACLE</southPath>
-      <eastPath>OBSTACLE</eastPath>
-      <westPath>OPEN</westPath>
+      <dirtLevel>2</dirtLevel>
+      <northBorder>OPEN</northBorder>
+      <southBorder>OBSTACLE</southBorder>
+      <eastBorder>OBSTACLE</eastBorder>
+      <westBorder>OPEN</westBorder>
     </cell>
     <cell id="4">
       <isStation>false</isStation>
       <floorLevel>1</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>OPEN</northPath>
-      <southPath>OBSTACLE</southPath>
-      <eastPath>OBSTACLE</eastPath>
-      <westPath>OBSTACLE</westPath>
+      <dirtLevel>2</dirtLevel>
+      <northBorder>OPEN</northBorder>
+      <southBorder>OBSTACLE</southBorder>
+      <eastBorder>OBSTACLE</eastBorder>
+      <westBorder>OBSTACLE</westBorder>
     </cell>
     <cell id="5">
       <isStation>false</isStation>
       <floorLevel>1</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>OBSTACLE</northPath>
-      <southPath>OPEN</southPath>
-      <eastPath>OPEN</eastPath>
-      <westPath>OBSTACLE</westPath>
+      <dirtLevel>2</dirtLevel>
+      <northBorder>OBSTACLE</northBorder>
+      <southBorder>OPEN</southBorder>
+      <eastBorder>OPEN</eastBorder>
+      <westBorder>OBSTACLE</westBorder>
     </cell>
     <cell id="6">
       <isStation>false</isStation>
       <floorLevel>1</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>OPEN</northPath>
-      <southPath>OBSTACLE</southPath>
-      <eastPath>OPEN</eastPath>
-      <westPath>OPEN</westPath>
+      <dirtLevel>2</dirtLevel>
+      <northBorder>OPEN</northBorder>
+      <southBorder>OBSTACLE</southBorder>
+      <eastBorder>OPEN</eastBorder>
+      <westBorder>OPEN</westBorder>
     </cell>
     <cell id="7">
       <isStation>true</isStation>
       <floorLevel>1</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>OBSTACLE</northPath>
-      <southPath>OPEN</southPath>
-      <eastPath>OPEN</eastPath>
-      <westPath>OPEN</westPath>
+      <dirtLevel>2</dirtLevel>
+      <northBorder>OBSTACLE</northBorder>
+      <southBorder>OPEN</southBorder>
+      <eastBorder>OPEN</eastBorder>
+      <westBorder>OPEN</westBorder>
     </cell>
     <cell id="8">
       <isStation>false</isStation>
       <floorLevel>1</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>OBSTACLE</northPath>
-      <southPath>OPEN</southPath>
-      <eastPath>OBSTACLE</eastPath>
-      <westPath>OPEN</westPath>
+      <dirtLevel>2</dirtLevel>
+      <northBorder>OBSTACLE</northBorder>
+      <southBorder>OPEN</southBorder>
+      <eastBorder>STAIRS</eastBorder>
+      <westBorder>OPEN</westBorder>
     </cell>
     <cell id="9">
       <isStation>false</isStation>
       <floorLevel>1</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>OPEN</northPath>
-      <southPath>OPEN</southPath>
-      <eastPath>OBSTACLE</eastPath>
-      <westPath>OBSTACLE</westPath>
+      <dirtLevel>2</dirtLevel>
+      <northBorder>OPEN</northBorder>
+      <southBorder>OPEN</southBorder>
+      <eastBorder>OBSTACLE</eastBorder>
+      <westBorder>OBSTACLE</westBorder>
     </cell>
     <cell id="10">
       <isStation>false</isStation>
       <floorLevel>1</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>OBSTACLE</northPath>
-      <southPath>OBSTACLE</southPath>
-      <eastPath>OBSTACLE</eastPath>
-      <westPath>OBSTACLE</westPath>
+      <dirtLevel>2</dirtLevel>
+      <northBorder>OBSTACLE</northBorder>
+      <southBorder>OBSTACLE</southBorder>
+      <eastBorder>OBSTACLE</eastBorder>
+      <westBorder>OBSTACLE</westBorder>
     </cell>
     <cell id="11">
       <isStation>false</isStation>
       <floorLevel>1</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>OBSTACLE</northPath>
-      <southPath>OPEN</southPath>
-      <eastPath>OPEN</eastPath>
-      <westPath>OBSTACLE</westPath>
+      <dirtLevel>2</dirtLevel>
+      <northBorder>OBSTACLE</northBorder>
+      <southBorder>OPEN</southBorder>
+      <eastBorder>OPEN</eastBorder>
+      <westBorder>OBSTACLE</westBorder>
     </cell>
     <cell id="12">
       <isStation>false</isStation>
       <floorLevel>1</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>OBSTACLE</northPath>
-      <southPath>OBSTACLE</southPath>
-      <eastPath>OPEN</eastPath>
-      <westPath>OPEN</westPath>
+      <dirtLevel>2</dirtLevel>
+      <northBorder>OBSTACLE</northBorder>
+      <southBorder>OBSTACLE</southBorder>
+      <eastBorder>OPEN</eastBorder>
+      <westBorder>OPEN</westBorder>
     </cell>
     <cell id="13">
       <isStation>true</isStation>
       <floorLevel>1</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>OBSTACLE</northPath>
-      <southPath>OBSTACLE</southPath>
-      <eastPath>OBSTACLE</eastPath>
-      <westPath>OPEN</westPath>
+      <dirtLevel>2</dirtLevel>
+      <northBorder>OBSTACLE</northBorder>
+      <southBorder>OBSTACLE</southBorder>
+      <eastBorder>OBSTACLE</eastBorder>
+      <westBorder>OPEN</westBorder>
     </cell>
     <cell id="14">
       <isStation>false</isStation>
       <floorLevel>1</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>OBSTACLE</northPath>
-      <southPath>OPEN</southPath>
-      <eastPath>OBSTACLE</eastPath>
-      <westPath>OBSTACLE</westPath>
+      <dirtLevel>2</dirtLevel>
+      <northBorder>OBSTACLE</northBorder>
+      <southBorder>OPEN</southBorder>
+      <eastBorder>OBSTACLE</eastBorder>
+      <westBorder>OBSTACLE</westBorder>
     </cell>
   </cells>
 </root>
