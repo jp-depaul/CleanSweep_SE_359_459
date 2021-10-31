@@ -106,9 +106,9 @@ public class VirtualFloor {
   }
 
 
-  public void printHomeSimple() {
+  public void printHomeSimple(String name) {
     System.out.println("=========================================================================");
-    System.out.println("<<Sample Printout>>");
+    System.out.println("<<" + name + ">>");
     System.out.println("Origin: " + origin.x + "," + origin.y);
     System.out.println("CELL ID, ARRAY POSITION, PATHS (in order of north, south, east, west)");
     System.out.println("=========================================================================");

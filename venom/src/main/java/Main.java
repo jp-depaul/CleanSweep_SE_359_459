@@ -21,7 +21,7 @@ public class Main {
     }
     robot = virtualFloor.createRobot();
 
-    virtualFloor.printHomeSimple();
+    virtualFloor.printHomeSimple(homeFilePath);
 
 
     try {
