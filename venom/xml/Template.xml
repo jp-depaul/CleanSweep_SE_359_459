@@ -8,21 +8,21 @@
   <cells>
     <cell id="0">
       <isStation>true</isStation>
-      <floorLevel>0</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>UNKNOWN</northPath>
-      <southPath>UNKNOWN</southPath>
-      <eastPath>UNKNOWN</eastPath>
-      <westPath>UNKNOWN</westPath>
+      <floorLevel>1</floorLevel>
+      <dirtLevel>1</dirtLevel>
+      <northBorder>UNKNOWN</northBorder>
+      <southBorder>UNKNOWN</southBorder>
+      <eastBorder>UNKNOWN</eastBorder>
+      <westBorder>UNKNOWN</westBorder>
     </cell>
     <cell id="1">
       <isStation>false</isStation>
-      <floorLevel>0</floorLevel>
-      <dirtLevel>0</dirtLevel>
-      <northPath>UNKNOWN</northPath>
-      <southPath>UNKNOWN</southPath>
-      <eastPath>UNKNOWN</eastPath>
-      <westPath>UNKNOWN</westPath>
+      <floorLevel>1</floorLevel>
+      <dirtLevel>1</dirtLevel>
+      <northBorder>UNKNOWN</northBorder>
+      <southBorder>UNKNOWN</southBorder>
+      <eastBorder>UNKNOWN</eastBorder>
+      <westBorder>UNKNOWN</westBorder>
     </cell>
   </cells>
 </root>

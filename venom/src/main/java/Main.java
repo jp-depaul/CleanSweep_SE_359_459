@@ -4,19 +4,24 @@ public class Main {
     VirtualFloor virtualFloor = null;
     Robot robot;
     String homeFilePath;
-
     if (args.length >= 1) {
       homeFilePath = args[0];
     }
     else {
       // Default arguments
-      homeFilePath = "venom/xml/FloorPlanA.xml";
+      homeFilePath = "venom/xml/FloorPlanB.xml";
     }
 
     // Create virtual floor and robot
     try { virtualFloor = new VirtualFloor(homeFilePath); }
-    catch (Exception e) { System.err.println("Could not load home file : " + e.getClass()); }
+    catch (Exception e)
+    {
+      System.err.println("Could not load home file : " + e.getClass());
+      e.printStackTrace();
+    }
     robot = virtualFloor.createRobot();
+
+    virtualFloor.printHomeSimple();
 
 
     try {

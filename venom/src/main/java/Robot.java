@@ -3,20 +3,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.function.Predicate;
 
-import static java.lang.System.exit;
-
 public class Robot {
 
   private final VirtualFloor FLOOR;
   private final Logger LOGGER;
   private final HashMap<Point, Cell> CELL_MAP = new HashMap<Point, Cell>();
   private final Point ORIGIN = new Point(0, 0);
-  private final int CHARGE_CAPACITY = 250;//250;
+  private final int CHARGE_CAPACITY = 250;
   private final int DIRT_CAPACITY = 50;
 
   private double chargeLevel = CHARGE_CAPACITY;
-  private int dirtLevel = 0;
-  private ArrayList<Point> stations; // not necessarily mapped
+  // private int dirtLevel = 0; TODO: dirt level
+  private int cleaningMode = 1;
+  private ArrayList<Point> stations;
   private Point currentPoint = ORIGIN;
 
   public Robot(VirtualFloor virtualFloor) {
@@ -104,17 +103,17 @@ public class Robot {
       }
     }
   }
-  public void returnAndCharge() {
+  public void returnAndCharge() throws ShutdownException {
     ArrayList<Point> path = getMinPathToPointWhere(Cell::isStation);
     if (path == null) {
       LOGGER.logStationObstructed(currentPoint);
-      exit(-1);
+      throw new ShutdownException(ShutdownException.STATION_OBSTRUCTED);
     }
     for (Point p : path) {
       Dir d = Util.getOrientation(currentPoint, p);
       if (CELL_MAP.get(currentPoint).border.get(Util.getOrientation(currentPoint, p)) != CellBorder.OPEN) {
         LOGGER.logStationObstructed(currentPoint);
-        exit(-1);
+        throw new ShutdownException(ShutdownException.STATION_OBSTRUCTED);
       }
       moveTo(p);
       scan();
@@ -123,9 +122,6 @@ public class Robot {
   }
 
   // Logged Actions
-  private void logSuccess() {
-
-  }
   private void scan() {
 
     // preserve marking, update current, set as visited
@@ -157,6 +153,11 @@ public class Robot {
     }
   }
   private void clean() throws ShutdownException {
+    int floorLevel = CELL_MAP.get(currentPoint).getFloorLevel();
+    if (cleaningMode != floorLevel) {
+      LOGGER.logShiftMode(currentPoint, cleaningMode, floorLevel);
+      cleaningMode = floorLevel;
+    }
     LOGGER.logClean(currentPoint);
     chargeLevel -= CELL_MAP.get(currentPoint).getCost();
     FLOOR.cleanCellAtOriginRelativePoint(currentPoint);
@@ -167,7 +168,6 @@ public class Robot {
   }
   private void moveTo(Point target) {
     LOGGER.logMove(currentPoint, target);
-    // TODO: shift mode
     chargeLevel -= ((double) CELL_MAP.get(currentPoint).getCost() + (double) CELL_MAP.get(target).getCost()) / 2;
     currentPoint = target;
     if (chargeLevel < 0) {

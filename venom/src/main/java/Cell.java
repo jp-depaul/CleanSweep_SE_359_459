@@ -44,6 +44,9 @@ public class Cell {
   public int getCost() {
     return floorLevel;
   }
+  public int getFloorLevel() {
+    return floorLevel;
+  }
   public boolean containsUnknown() {
     return border.containsValue(CellBorder.UNKNOWN);
   }

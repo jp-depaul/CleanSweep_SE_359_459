@@ -45,6 +45,13 @@ public class Logger {
         }
         log(msg);
     }
+    public void logShiftMode(Point point, int before, int after) {
+        String msg = getIndent(1) + "SHIFTING CLEANING MODE [LV" + before + " -> LV" + after + "]";
+        if (showCoordinates) {
+            msg += " : " + pointToString(point);
+        }
+        log(msg);
+    }
     //
     // PHASE INDICATION :
     //

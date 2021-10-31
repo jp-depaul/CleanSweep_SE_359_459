@@ -44,6 +44,10 @@ public class VirtualFloor {
       int i = 0;
       for (int y = 0; y <= yLength - 1; y++) {
         for (int x = 0; x <= xLength - 1; x++) {
+          if (i >= 24) {
+            System.out.println();
+          }
+
           node = nList.item(i);
           eElement = (Element) node;
           if (eElement.getAttribute("id").equals(originCellId)) {
@@ -108,6 +112,7 @@ public class VirtualFloor {
     System.out.println("Origin: " + origin.x + "," + origin.y);
     System.out.println("CELL ID, ARRAY POSITION, PATHS (in order of north, south, east, west)");
     System.out.println("=========================================================================");
+
     for (int y = 0; y <= yLength - 1; y++) {
       for (int x = 0; x <= xLength - 1; x++) {
         String out = "    ID=[";
