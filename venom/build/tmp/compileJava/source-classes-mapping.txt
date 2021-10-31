@@ -6,21 +6,23 @@ portal/cleanSweepPortal.java
  portal.cleanSweepPortal
 portal/HelloWorld.java
  portal.HelloWorld
-Util.java
- Util
- Util$1
+ShutdownException.java
+ ShutdownException
+Cell.java
+ Cell
 CellBorder.java
  CellBorder
 portal/userName.java
  portal.userName
-Cell.java
- Cell
-Logger.java
- Logger
 Main.java
  Main
 Robot.java
  Robot
  Robot$1
+Logger.java
+ Logger
+Util.java
+ Util
+ Util$1
 VirtualFloor.java
  VirtualFloor

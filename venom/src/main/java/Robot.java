@@ -7,27 +7,29 @@ import static java.lang.System.exit;
 
 public class Robot {
 
-  private VirtualFloor virtualFloor;
-  private final int CHARGE_CAPACITY = 30;//250;
-  private final int DIRT_CAPACITY = 50;
-  private double chargeLevel = CHARGE_CAPACITY;
-  private int dirtLevel;
-  private ArrayList<Point> stations; // not necessarily mapped
-
-  private final Dir[] ALL_DIR = new Dir[]{Dir.NORTH, Dir.SOUTH, Dir.EAST, Dir.WEST};
-  private HashMap<Point, Cell> cellMap = new HashMap<Point, Cell>();
+  private final VirtualFloor FLOOR;
+  private final Logger LOGGER;
+  private final HashMap<Point, Cell> CELL_MAP = new HashMap<Point, Cell>();
   private final Point ORIGIN = new Point(0, 0);
+  private final int CHARGE_CAPACITY = 250;//250;
+  private final int DIRT_CAPACITY = 50;
+
+  private double chargeLevel = CHARGE_CAPACITY;
+  private int dirtLevel = 0;
+  private ArrayList<Point> stations; // not necessarily mapped
   private Point currentPoint = ORIGIN;
 
   public Robot(VirtualFloor virtualFloor) {
-    this.virtualFloor = virtualFloor;
+    FLOOR = virtualFloor;
+    LOGGER = new Logger();
   }
 
   // Primary Functions
-  public void mapFloor() {
-    cellMap.clear();
+  public void mapFloor() throws ShutdownException {
+    LOGGER.logBeginMap(currentPoint);
+    CELL_MAP.clear();
     currentPoint = ORIGIN;
-    cellMap.put(currentPoint, new Cell());
+    CELL_MAP.put(currentPoint, new Cell());
     ArrayList<Point> pathToUnvisited;
     do {
       scan();
@@ -45,17 +47,17 @@ public class Robot {
         moveTo(pathToUnvisited.get(0));
       }
     } while (true);
-    System.out.println("return ---------------");
     returnAndCharge();
-    System.out.println("DONE. ---------------");
+    LOGGER.logEndMap();
   }
 
-  public void cleanFloor() {
+  public void cleanFloor() throws ShutdownException {
     // TODO: check conditions
-    if (cellMap.isEmpty()) {
+    if (CELL_MAP.isEmpty()) {
       return;
     }
-    for (Cell c : cellMap.values()) {
+    LOGGER.logBeginClean();
+    for (Cell c : CELL_MAP.values()) {
       c.setMarked(true);
     }
     ArrayList<Point> pathToMarked;
@@ -74,8 +76,8 @@ public class Robot {
       else if (pathToMarked.isEmpty()) {
         clean();
         scan();
-        if (!cellMap.get(currentPoint).needsCleaning()) {
-          cellMap.get(currentPoint).setMarked(false);
+        if (!CELL_MAP.get(currentPoint).needsCleaning()) {
+          CELL_MAP.get(currentPoint).setMarked(false);
         }
       }
       else {
@@ -83,7 +85,7 @@ public class Robot {
       }
     } while (true);
     returnAndCharge();
-    System.out.println("DONE. ---------------");
+    LOGGER.logEndClean();
   }
 
   // Supplementary Functions
@@ -93,7 +95,7 @@ public class Robot {
       for (int x = -1; x <= 1; x++) {
         if (!(Math.abs(x) == 2 && Math.abs(y) == 2) || (x != 0 && y != 0)) {
           Point p = new Point(currentPoint.x + x, currentPoint.y + y);
-          Cell c = virtualFloor.getCellCopyFromOriginRelativePoint(p);
+          Cell c = FLOOR.getCellCopyFromOriginRelativePoint(p);
           if (!stations.contains(p) && c.isStation()) {
             stations.add(p);
             // TODO: Detected station message
@@ -103,18 +105,15 @@ public class Robot {
     }
   }
   public void returnAndCharge() {
-    final String ERR_MSG = "Expected path to station was obstructed";
     ArrayList<Point> path = getMinPathToPointWhere(Cell::isStation);
     if (path == null) {
-      System.out.println("A");
-      errorShutDown(ERR_MSG);
+      LOGGER.logStationObstructed(currentPoint);
       exit(-1);
     }
     for (Point p : path) {
-      Dir d = getOrientation(currentPoint, p);
-      if (cellMap.get(currentPoint).border.get(getOrientation(currentPoint, p)) != CellBorder.OPEN) {
-        System.out.println(p.x + "," + p.y);
-        errorShutDown(ERR_MSG);
+      Dir d = Util.getOrientation(currentPoint, p);
+      if (CELL_MAP.get(currentPoint).border.get(Util.getOrientation(currentPoint, p)) != CellBorder.OPEN) {
+        LOGGER.logStationObstructed(currentPoint);
         exit(-1);
       }
       moveTo(p);
@@ -127,86 +126,63 @@ public class Robot {
   private void logSuccess() {
 
   }
-  private void errorShutDown(String msg) {
-    System.out.println("ERROR: " + msg);
-  }
   private void scan() {
+
     // preserve marking, update current, set as visited
-    boolean wasMarked = cellMap.get(currentPoint).isMarked();
-    cellMap.put(currentPoint, virtualFloor.getCellCopyFromOriginRelativePoint(currentPoint));
-    cellMap.get(currentPoint).setMarked(wasMarked);
+    boolean wasMarked = CELL_MAP.get(currentPoint).isMarked();
+    CELL_MAP.put(currentPoint, FLOOR.getCellCopyFromOriginRelativePoint(currentPoint));
+    CELL_MAP.get(currentPoint).setMarked(wasMarked);
 
     // sync borders with neighboring cells
-    for (Dir dir1 : ALL_DIR) {
+    for (Dir dir1 : Util.ALL_DIR) {
       Point adjacentPoint = getAdjacentPoint(currentPoint, dir1);
 
       // IF neighbor found : sync border with neighbor
-      if (cellMap.containsKey(adjacentPoint)) {
-        cellMap.get(adjacentPoint).border.put(Util.reverseDir(dir1), cellMap.get(currentPoint).border.get(dir1));
+      if (CELL_MAP.containsKey(adjacentPoint)) {
+        CELL_MAP.get(adjacentPoint).border.put(Util.reverseDir(dir1), CELL_MAP.get(currentPoint).border.get(dir1));
       }
 
       // ELSE IF no neighbor but open path : create neighbor
-      else if (cellMap.get(currentPoint).border.get(dir1) == CellBorder.OPEN && !cellMap.containsKey(adjacentPoint)) {
-        cellMap.put(adjacentPoint, new Cell());
-        for (Dir dir2 : ALL_DIR) {
+      else if (CELL_MAP.get(currentPoint).border.get(dir1) == CellBorder.OPEN && !CELL_MAP.containsKey(adjacentPoint)) {
+        //logger.logDiscoveredNewCell(adjacentPoint, );
+        CELL_MAP.put(adjacentPoint, new Cell());
+        for (Dir dir2 : Util.ALL_DIR) {
           Point adjacentAdjacentPoint = getAdjacentPoint(adjacentPoint, dir2);
-          if (cellMap.containsKey(adjacentAdjacentPoint)) {
-            cellMap.get(adjacentPoint).border.put(dir2, cellMap.get(adjacentAdjacentPoint).border.get(Util.reverseDir(dir2)));
+          if (CELL_MAP.containsKey(adjacentAdjacentPoint)) {
+            CELL_MAP.get(adjacentPoint).border.put(dir2, CELL_MAP.get(adjacentAdjacentPoint).border.get(Util.reverseDir(dir2)));
           }
         }
       }
 
     }
   }
-
-  private void clean() {
-    chargeLevel -= cellMap.get(currentPoint).getCost();
-    virtualFloor.cleanCellAtOriginRelativePoint(currentPoint);
-    System.out.println("Cleaned at " + currentPoint.x + "," + currentPoint.y);
+  private void clean() throws ShutdownException {
+    LOGGER.logClean(currentPoint);
+    chargeLevel -= CELL_MAP.get(currentPoint).getCost();
+    FLOOR.cleanCellAtOriginRelativePoint(currentPoint);
     if (chargeLevel < 0) {
-      errorShutDown("Out of charge");
+      LOGGER.logOutOfCharge(currentPoint);
+      throw new ShutdownException("");
     }
   }
   private void moveTo(Point target) {
-    // check length = 1
-    // shift mode
-    chargeLevel -= ((double)cellMap.get(currentPoint).getCost() + (double)cellMap.get(target).getCost()) / 2;
+    LOGGER.logMove(currentPoint, target);
+    // TODO: shift mode
+    chargeLevel -= ((double) CELL_MAP.get(currentPoint).getCost() + (double) CELL_MAP.get(target).getCost()) / 2;
     currentPoint = target;
-    System.out.println("Moved to " + target.x + "," + target.y);
     if (chargeLevel < 0) {
-      errorShutDown("Out of charge");
-    }
-    if (target.x == 0 && target.y == 1) {
-      System.out.print("");
+      LOGGER.logOutOfCharge(currentPoint);
     }
   }
   private void charge() {
-    System.out.println("==Charged==");
     chargeLevel = CHARGE_CAPACITY;
+    LOGGER.logCharge(currentPoint);
   }
 
   // Utility Functions
-  private Dir getOrientation(Point from, Point to) {
-    if (from.x == to.x && from.y + 1 == to.y) {
-      return Dir.NORTH;
-    }
-    if (from.x == to.x && from.y == to.y + 1) {
-      return Dir.SOUTH;
-    }
-    if (from.x + 1 == to.x && from.y == to.y) {
-      return Dir.EAST;
-    }
-    if (from.x == to.x + 1 && from.y == to.y) {
-      return Dir.WEST;
-    }
-    System.out.println("ERROR: invalid move target");
-    exit(-1);
-    return null;
-  }
-
   private ArrayList<Point> getMinPathToPointWhere(Predicate<Cell> condition) {
     ArrayList<Point> path = new ArrayList<Point>();
-    if (!condition.test(cellMap.get(currentPoint))) {
+    if (!condition.test(CELL_MAP.get(currentPoint))) {
       path.add(currentPoint);
       path = getMinPathToPointWhereHelper(condition, path);
     }
@@ -216,14 +192,14 @@ public class Robot {
     return path;
   }
   private ArrayList<Point> getMinPathToPointWhereHelper(Predicate<Cell> condition, ArrayList<Point> path) {
-    if (condition.test(cellMap.get(path.get(path.size() - 1)))) {
+    if (condition.test(CELL_MAP.get(path.get(path.size() - 1)))) {
       return path;
     }
     ArrayList<Point> shortest = null;
-    for (Dir dir : ALL_DIR) {
-      if (cellMap.get(path.get(path.size() - 1)).border.get(dir) == CellBorder.OPEN) {
+    for (Dir dir : Util.ALL_DIR) {
+      if (CELL_MAP.get(path.get(path.size() - 1)).border.get(dir) == CellBorder.OPEN) {
         Point p = getAdjacentPoint(path.get(path.size() - 1), dir);
-        if (!path.contains(p) && cellMap.containsKey(p)) {
+        if (!path.contains(p) && CELL_MAP.containsKey(p)) {
           ArrayList<Point> newPath = new ArrayList<Point>(path);
           newPath.add(p);
           ArrayList<Point> result = getMinPathToPointWhereHelper(condition, newPath);
@@ -236,18 +212,16 @@ public class Robot {
     }
     return shortest;
   }
-
-
   private double getPathCost(ArrayList<Point> path, boolean addCurrentPoint) {
     double cost = 0.0;
     if (path.isEmpty()) {
       return cost;
     }
     if (addCurrentPoint) {
-      cost += (double)(cellMap.get(currentPoint).getCost() + cellMap.get(path.get(0)).getCost()) / 2;
+      cost += (double)(CELL_MAP.get(currentPoint).getCost() + CELL_MAP.get(path.get(0)).getCost()) / 2;
     }
     for (int i = 0; i < path.size() - 2; i++) {
-      cost += (double)(cellMap.get(path.get(i)).getCost() + cellMap.get(path.get(i + 1)).getCost()) / 2;
+      cost += (double)(CELL_MAP.get(path.get(i)).getCost() + CELL_MAP.get(path.get(i + 1)).getCost()) / 2;
     }
     return cost;
   }
@@ -263,8 +237,5 @@ public class Robot {
         return new Point(pos.x - 1, pos.y);
     }
     return pos;
-  }
-  private boolean isOrigin(Point point) {
-    return point.equals(ORIGIN);
   }
 }
