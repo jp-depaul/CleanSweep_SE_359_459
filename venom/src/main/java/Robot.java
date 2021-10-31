@@ -159,7 +159,7 @@ public class Robot {
       cleaningMode = floorLevel;
     }
     LOGGER.logClean(currentPoint);
-    chargeLevel -= CELL_MAP.get(currentPoint).getCost();
+    chargeLevel -= cleaningMode;
     FLOOR.cleanCellAtOriginRelativePoint(currentPoint);
     if (chargeLevel < 0) {
       LOGGER.logOutOfCharge(currentPoint);
