@@ -10,15 +10,15 @@ ShutdownException.java
  ShutdownException
 portal/cleanSweepPortal.java
  portal.cleanSweepPortal
-Logger.java
- Logger
+Util.java
+ Util
+ Util$1
 CellBorder.java
  CellBorder
 portal/userName.java
  portal.userName
-Util.java
- Util
- Util$1
+Logger.java
+ Logger
 Main.java
  Main
 Robot.java

@@ -97,6 +97,13 @@ public class Logger {
         }
         log(msg);
     }
+    public void maxDirtCapacityExceeded(Point point) {
+        String msg = "ATTEMPTED TO EXCEED MAX DIRT CAPACITY, SHUTTING DOWN";
+        if (showCoordinates) {
+            msg += " : " + pointToString(point);
+        }
+        log(msg);
+    }
     public void logStationObstructed(Point point) {
         String msg = "EXPECTED PATH TO STATION WAS OBSTRUCTED, SHUTTING DOWN";
         if (showCoordinates) {

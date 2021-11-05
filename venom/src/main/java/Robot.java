@@ -1,6 +1,8 @@
 import java.awt.Point;
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 import java.util.function.Predicate;
 
 public class Robot {
@@ -13,7 +15,8 @@ public class Robot {
   private final int DIRT_CAPACITY = 50;
 
   private double chargeLevel = CHARGE_CAPACITY;
-  // private int dirtLevel = 0; TODO: dirt level
+  private int dirtLevel = 0;
+  private boolean isFull = false;
   private int cleaningMode = 1;
   private ArrayList<Point> stations;
   private Point currentPoint = ORIGIN;
@@ -50,7 +53,7 @@ public class Robot {
     LOGGER.logEndMap();
   }
 
-  public void cleanFloor() throws ShutdownException {
+  public void cleanFloor() throws ShutdownException, InterruptedException {
     // TODO: check conditions
     if (CELL_MAP.isEmpty()) {
       return;
@@ -72,6 +75,20 @@ public class Robot {
       ) {
         returnAndCharge();
       }
+      else if (dirtLevel >= DIRT_CAPACITY) {
+        isFull = true;
+        returnAndCharge();
+        // TODO: replace empty functionality
+        while (isFull) {
+          Scanner s = new Scanner(System.in);
+          System.out.println("Dirt container is full: type EMPTY to empty vacuum");
+          String input = s.nextLine();
+          if (input.equals("EMPTY") || input.equals("empty")) {
+            dirtLevel = 0;
+            isFull = false;
+          }
+        }
+      }
       else if (pathToMarked.isEmpty()) {
         clean();
         scan();
@@ -88,21 +105,6 @@ public class Robot {
   }
 
   // Supplementary Functions
-  public void detectNewStations() {
-    // Stations can be detected up to 2 cells away
-    for (int y = -1; y <= 1; y++) {
-      for (int x = -1; x <= 1; x++) {
-        if (!(Math.abs(x) == 2 && Math.abs(y) == 2) || (x != 0 && y != 0)) {
-          Point p = new Point(currentPoint.x + x, currentPoint.y + y);
-          Cell c = FLOOR.getCellCopyFromOriginRelativePoint(p);
-          if (!stations.contains(p) && c.isStation()) {
-            stations.add(p);
-            // TODO: Detected station message
-          }
-        }
-      }
-    }
-  }
   public void returnAndCharge() throws ShutdownException {
     ArrayList<Point> path = getMinPathToPointWhere(Cell::isStation);
     if (path == null) {
@@ -161,8 +163,13 @@ public class Robot {
     LOGGER.logClean(currentPoint);
     chargeLevel -= cleaningMode;
     FLOOR.cleanCellAtOriginRelativePoint(currentPoint);
+    dirtLevel++;
     if (chargeLevel < 0) {
       LOGGER.logOutOfCharge(currentPoint);
+      throw new ShutdownException("");
+    }
+    else if (dirtLevel > DIRT_CAPACITY) {
+      LOGGER.maxDirtCapacityExceeded(currentPoint);
       throw new ShutdownException("");
     }
   }

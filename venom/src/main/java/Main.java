@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Main {
 
   public static void main(String[] args) {
@@ -22,8 +25,6 @@ public class Main {
     robot = virtualFloor.createRobot();
 
     virtualFloor.printHomeSimple(homeFilePath);
-
-
     try {
       // TODO: handle commands
       robot.mapFloor();
@@ -31,7 +32,10 @@ public class Main {
 
     }
     catch(ShutdownException e) {
-      System.out.println("-- ROBOT HAS SHUT DOWN --");
+      System.err.println("-- ROBOT HAS SHUT DOWN --");
+    }
+    catch(Exception e) {
+      System.err.println(e.getClass() + " at " + Arrays.toString(e.getStackTrace()));
     }
 
   }
