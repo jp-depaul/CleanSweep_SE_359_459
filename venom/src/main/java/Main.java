@@ -1,9 +1,11 @@
+import java.io.File;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Main {
 
   public static void main(String[] args) {
+
     VirtualFloor virtualFloor = null;
     Robot robot;
     String homeFilePath;
@@ -22,6 +24,7 @@ public class Main {
       System.err.println("Could not load home file : " + e.getClass());
       e.printStackTrace();
     }
+    assert virtualFloor != null;
     robot = virtualFloor.createRobot();
 
     virtualFloor.printHomeSimple(homeFilePath);

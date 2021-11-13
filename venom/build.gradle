@@ -17,3 +17,6 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+System.setProperty( "user.dir", project.projectDir.toString() )
+println  "  project dir:  "+ System.getProperty("user.dir");

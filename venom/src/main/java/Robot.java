@@ -39,13 +39,11 @@ public class Robot {
       pathToUnvisited = getMinPathToPointWhere(Cell::isUnvisited);
       if (pathToUnvisited == null) {
         break;
-      }
-      else if (chargeLevel <= getPathCost(pathToStation, true)
+      } else if (chargeLevel <= getPathCost(pathToStation, true)
               + getPathCost(pathToUnvisited, true) * 2 + 3
       ) {
         returnAndCharge();
-      }
-      else {
+      } else {
         moveTo(pathToUnvisited.get(0));
       }
     } while (true);
@@ -69,13 +67,11 @@ public class Robot {
       pathToMarked = getMinPathToPointWhere(Cell::isMarked);
       if (pathToMarked == null) {
         break;
-      }
-      else if (chargeLevel <= getPathCost(pathToStation, true)
+      } else if (chargeLevel <= getPathCost(pathToStation, true)
               + getPathCost(pathToMarked, true) * 2 + 3
       ) {
         returnAndCharge();
-      }
-      else if (dirtLevel >= DIRT_CAPACITY) {
+      } else if (dirtLevel >= DIRT_CAPACITY) {
         isFull = true;
         returnAndCharge();
         // TODO: replace empty functionality
@@ -88,15 +84,13 @@ public class Robot {
             isFull = false;
           }
         }
-      }
-      else if (pathToMarked.isEmpty()) {
+      } else if (pathToMarked.isEmpty()) {
         clean();
         scan();
         if (!CELL_MAP.get(currentPoint).needsCleaning()) {
           CELL_MAP.get(currentPoint).setMarked(false);
         }
-      }
-      else {
+      } else {
         moveTo(pathToMarked.get(0));
       }
     } while (true);
@@ -154,6 +148,7 @@ public class Robot {
 
     }
   }
+
   private void clean() throws ShutdownException {
     int floorLevel = CELL_MAP.get(currentPoint).getFloorLevel();
     if (cleaningMode != floorLevel) {
@@ -167,12 +162,12 @@ public class Robot {
     if (chargeLevel < 0) {
       LOGGER.logOutOfCharge(currentPoint);
       throw new ShutdownException("");
-    }
-    else if (dirtLevel > DIRT_CAPACITY) {
+    } else if (dirtLevel > DIRT_CAPACITY) {
       LOGGER.maxDirtCapacityExceeded(currentPoint);
       throw new ShutdownException("");
     }
   }
+
   private void moveTo(Point target) {
     LOGGER.logMove(currentPoint, target);
     chargeLevel -= ((double) CELL_MAP.get(currentPoint).getCost() + (double) CELL_MAP.get(target).getCost()) / 2;
@@ -181,13 +176,17 @@ public class Robot {
       LOGGER.logOutOfCharge(currentPoint);
     }
   }
+
   private void charge() {
     chargeLevel = CHARGE_CAPACITY;
     LOGGER.logCharge(currentPoint);
   }
 
   // Utility Functions
-  private ArrayList<Point> getMinPathToPointWhere(Predicate<Cell> condition) {
+  public void setPositionForTesting(Point p) {
+    currentPoint = p;
+  }
+  public ArrayList<Point> getMinPathToPointWhere(Predicate<Cell> condition) {
     ArrayList<Point> path = new ArrayList<Point>();
     if (!condition.test(CELL_MAP.get(currentPoint))) {
       path.add(currentPoint);
@@ -198,6 +197,7 @@ public class Robot {
     }
     return path;
   }
+
   private ArrayList<Point> getMinPathToPointWhereHelper(Predicate<Cell> condition, ArrayList<Point> path) {
     if (condition.test(CELL_MAP.get(path.get(path.size() - 1)))) {
       return path;
@@ -219,19 +219,23 @@ public class Robot {
     }
     return shortest;
   }
-  private double getPathCost(ArrayList<Point> path, boolean addCurrentPoint) {
+
+  public double getPathCost(ArrayList<Point> path, boolean addCurrentPoint) {
     double cost = 0.0;
     if (path.isEmpty()) {
       return cost;
     }
     if (addCurrentPoint) {
-      cost += (double)(CELL_MAP.get(currentPoint).getCost() + CELL_MAP.get(path.get(0)).getCost()) / 2;
+      cost += (double) (CELL_MAP.get(currentPoint).getCost() + CELL_MAP.get(path.get(0)).getCost()) / 2;
     }
-    for (int i = 0; i < path.size() - 2; i++) {
-      cost += (double)(CELL_MAP.get(path.get(i)).getCost() + CELL_MAP.get(path.get(i + 1)).getCost()) / 2;
+    if (path.size() > 1) {
+      for (int i = 0; i <= path.size() - 2; i++) {
+        cost += (double) (CELL_MAP.get(path.get(i)).getCost() + CELL_MAP.get(path.get(i + 1)).getCost()) / 2;
+      }
     }
     return cost;
   }
+
   private Point getAdjacentPoint(Point pos, Dir dir) {
     switch (dir) {
       case NORTH:
@@ -244,5 +248,9 @@ public class Robot {
         return new Point(pos.x - 1, pos.y);
     }
     return pos;
+  }
+
+  public boolean isFull() {
+    return isFull;
   }
 }
