@@ -101,19 +101,6 @@ public class RegisterOrLogin {
                             String scheduleStart = Files.readAllLines(Paths.get(MEMBERS_PATH)).get(i + 2);
                             String scheduleStop = Files.readAllLines(Paths.get(MEMBERS_PATH)).get(i + 3);
                             System.out.println("\nYour current scheduled cleaning is from " + scheduleStart + " to " + scheduleStop);
-                            SimpleDateFormat formatter = new SimpleDateFormat(("hh:mm:ss a"));
-                            Date date = new Date (System.currentTimeMillis());
-                            System.out.println("It is currently "+ formatter.format(date));
-                            System.out.println("Would you like to start cleaning now?");
-                            String yesOrNo = username.nextLine().toLowerCase();
-                            if(yesOrNo.equals("yes")) System.out.println("Starting to clean......");
-                            if(yesOrNo.equals("no")){
-                                System.out.println("Guiding to One-Time Cleaning Workflow...");
-                                System.out.println("You can set a One-Time Cleaning schedule. Would you like to do that?");
-                                yesOrNo = username.nextLine().toLowerCase();
-                                if(yesOrNo.equals("yes")) System.out.println("Let's schedule");
-                                if(yesOrNo.equals("no")) System.out.println("No problem!");
-                            }
 
                         }
                         else{ System.out.println("Incorrect password. Try again."); break;}
