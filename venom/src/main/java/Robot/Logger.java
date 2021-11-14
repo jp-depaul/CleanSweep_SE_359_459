@@ -1,14 +1,13 @@
+package Robot;
+
 import java.awt.*;
 
 public class Logger {
 
+    public boolean printOnNewAction = true;
     private String fullLog = "";
-    private boolean showCoordinates = true;
-    private boolean printOnNewAction = true;
+    private final boolean showCoordinates = true;
 
-    public Logger() {
-
-    }
     private void log(String msg) {
         fullLog += msg + "\n";
         if (printOnNewAction) {

@@ -8,7 +8,7 @@
         <cell id="0">
             <isStation>false</isStation>
             <floorLevel>2</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -17,7 +17,7 @@
         <cell id="1">
             <isStation>false</isStation>
             <floorLevel>2</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -26,7 +26,7 @@
         <cell id="2">
             <isStation>false</isStation>
             <floorLevel>2</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -35,7 +35,7 @@
         <cell id="3">
             <isStation>false</isStation>
             <floorLevel>2</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OBSTACLE</eastBorder>
@@ -44,7 +44,7 @@
         <cell id="4">
             <isStation>false</isStation>
             <floorLevel>3</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -53,7 +53,7 @@
         <cell id="5">
             <isStation>false</isStation>
             <floorLevel>3</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -62,7 +62,7 @@
         <cell id="6">
             <isStation>false</isStation>
             <floorLevel>3</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -71,7 +71,7 @@
         <cell id="7">
             <isStation>false</isStation>
             <floorLevel>3</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OBSTACLE</eastBorder>
@@ -80,7 +80,7 @@
         <cell id="8">
             <isStation>false</isStation>
             <floorLevel>2</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -89,7 +89,7 @@
         <cell id="9">
             <isStation>false</isStation>
             <floorLevel>2</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -98,7 +98,7 @@
         <cell id="10">
             <isStation>false</isStation>
             <floorLevel>2</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -107,7 +107,7 @@
         <cell id="11">
             <isStation>false</isStation>
             <floorLevel>2</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OBSTACLE</eastBorder>
@@ -116,7 +116,7 @@
         <cell id="12">
             <isStation>false</isStation>
             <floorLevel>3</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -125,7 +125,7 @@
         <cell id="13">
             <isStation>false</isStation>
             <floorLevel>3</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -134,7 +134,7 @@
         <cell id="14">
             <isStation>false</isStation>
             <floorLevel>3</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -143,7 +143,7 @@
         <cell id="15">
             <isStation>false</isStation>
             <floorLevel>3</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OBSTACLE</eastBorder>
@@ -152,7 +152,7 @@
         <cell id="16">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>STAIRS</eastBorder>
@@ -161,7 +161,7 @@
         <cell id="17">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -170,7 +170,7 @@
         <cell id="18">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -179,7 +179,7 @@
         <cell id="19">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -188,7 +188,7 @@
         <cell id="20">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -197,7 +197,7 @@
         <cell id="21">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -206,7 +206,7 @@
         <cell id="22">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -215,7 +215,7 @@
         <cell id="23">
             <isStation>true</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OBSTACLE</eastBorder>
@@ -224,7 +224,7 @@
         <cell id="24">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OBSTACLE</eastBorder>
@@ -233,7 +233,7 @@
         <cell id="25">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -242,7 +242,7 @@
         <cell id="26">
             <isStation>true</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OBSTACLE</eastBorder>
@@ -251,7 +251,7 @@
         <cell id="27">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -260,7 +260,7 @@
         <cell id="28">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -269,7 +269,7 @@
         <cell id="29">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -278,7 +278,7 @@
         <cell id="30">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -287,7 +287,7 @@
         <cell id="31">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OPEN</northBorder>
             <southBorder>OBSTACLE</southBorder>
             <eastBorder>OBSTACLE</eastBorder>
@@ -296,7 +296,7 @@
         <cell id="32">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OBSTACLE</eastBorder>
@@ -305,7 +305,7 @@
         <cell id="33">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -314,7 +314,7 @@
         <cell id="34">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OBSTACLE</eastBorder>
@@ -323,7 +323,7 @@
         <cell id="35">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -332,7 +332,7 @@
         <cell id="36">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -341,7 +341,7 @@
         <cell id="37">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -350,7 +350,7 @@
         <cell id="38">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OPEN</eastBorder>
@@ -359,7 +359,7 @@
         <cell id="39">
             <isStation>false</isStation>
             <floorLevel>1</floorLevel>
-            <dirtLevel>1</dirtLevel>
+            <dirtLevel>2</dirtLevel>
             <northBorder>OBSTACLE</northBorder>
             <southBorder>OPEN</southBorder>
             <eastBorder>OBSTACLE</eastBorder>

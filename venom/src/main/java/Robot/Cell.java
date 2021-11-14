@@ -1,3 +1,5 @@
+package Robot;
+
 import java.util.HashMap;
 
 public class Cell {

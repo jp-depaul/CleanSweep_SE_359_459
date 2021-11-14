@@ -1,12 +1,13 @@
+import Robot.Cell;
+import Robot.Robot;
+import Robot.VirtualFloor;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.awt.*;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class BasicTests {
     private static final String PATH = System.getProperty("user.dir") + "/xml/FloorPlanB.xml";

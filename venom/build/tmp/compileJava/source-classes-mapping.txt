@@ -1,28 +1,26 @@
-Dir.java
- Dir
-portal/HelloWorld.java
- portal.HelloWorld
-Cell.java
- Cell
-portal/registerOrLogin.java
- portal.registerOrLogin
-ShutdownException.java
- ShutdownException
-portal/cleanSweepPortal.java
- portal.cleanSweepPortal
-Util.java
- Util
- Util$1
-CellBorder.java
- CellBorder
-portal/userName.java
- portal.userName
-Logger.java
- Logger
-Main.java
- Main
-Robot.java
- Robot
- Robot$1
-VirtualFloor.java
- VirtualFloor
+Robot/ShutdownException.java
+ Robot.ShutdownException
+Robot/CellBorder.java
+ Robot.CellBorder
+Portal/UserName.java
+ Portal.UserName
+Portal/RegisterOrLogin.java
+ Portal.RegisterOrLogin
+Robot/Dir.java
+ Robot.Dir
+Robot/Robot.java
+ Robot.Robot
+ Robot.Robot$1
+Robot/Util.java
+ Robot.Util
+ Robot.Util$1
+Robot/Cell.java
+ Robot.Cell
+Robot/Logger.java
+ Robot.Logger
+Robot/Main.java
+ Robot.Main
+Robot/VirtualFloor.java
+ Robot.VirtualFloor
+Portal/CleanSweepPortal.java
+ Portal.CleanSweepPortal

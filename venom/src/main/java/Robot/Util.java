@@ -1,3 +1,5 @@
+package Robot;
+
 import java.awt.*;
 
 import static java.lang.System.exit;

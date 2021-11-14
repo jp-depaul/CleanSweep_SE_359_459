@@ -1,19 +1,18 @@
-package portal;
+package Portal;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.sql.Time;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-public class registerOrLogin {
+public class RegisterOrLogin {
 
-    public registerOrLogin() throws IOException {
+    private final String MEMBERS_PATH = "venom/resources/members.txt";
+
+    public RegisterOrLogin() throws IOException {
         System.out.println("Enter 'login' or 'create' your username:");
         Scanner loginOrCreate = new Scanner(System.in);
         String answer = loginOrCreate.nextLine();
@@ -21,13 +20,13 @@ public class registerOrLogin {
         if (answer.equals("create")) {
             System.out.println("Please enter username you'd like to create: ");
             Scanner accountName = new Scanner(System.in);
-            userName user = new userName();
+            UserName user = new UserName();
             user.setUserName(accountName.nextLine());
             ArrayList<String> fileContents = new ArrayList<>();
             String currentLine = null;
 
             try {
-                FileReader file = new FileReader("members.txt");
+                FileReader file = new FileReader(MEMBERS_PATH);
                 BufferedReader buff = new BufferedReader(file);
                 Writer output = null;
                 int duplicate = 0;
@@ -57,10 +56,8 @@ public class registerOrLogin {
                     System.out.println("Great! The device will clean from " + user.getScheduleStart() + " to " + user.getScheduleStop());
 
 
-
-
                     try {
-                        FileWriter writing = new FileWriter("members.txt", true);
+                        FileWriter writing = new FileWriter(MEMBERS_PATH, true);
                         BufferedWriter textWritten = new BufferedWriter(writing);
                         BufferedReader one = new BufferedReader(file);
 
@@ -73,7 +70,9 @@ public class registerOrLogin {
                         e.printStackTrace();
                     }
                 }
-            } finally {
+            }
+            catch (Exception e) {
+                e.printStackTrace();
             }
         }
 
@@ -84,7 +83,7 @@ public class registerOrLogin {
             String currentLine;
             ArrayList<String> fileContents = new ArrayList<>();
             try {
-                FileReader file = new FileReader("members.txt");
+                FileReader file = new FileReader(MEMBERS_PATH);
                 BufferedReader buff = new BufferedReader(file);
                 Writer output = null;
                 String start = null;
@@ -99,8 +98,8 @@ public class registerOrLogin {
                         String password = username.nextLine();
                         if(currentLine.contains(password)){
                             System.out.println("Login successful!");
-                            String scheduleStart = Files.readAllLines(Paths.get("members.txt")).get(i + 2);
-                            String scheduleStop = Files.readAllLines(Paths.get("members.txt")).get(i + 3);
+                            String scheduleStart = Files.readAllLines(Paths.get(MEMBERS_PATH)).get(i + 2);
+                            String scheduleStop = Files.readAllLines(Paths.get(MEMBERS_PATH)).get(i + 3);
                             System.out.println("\nYour current scheduled cleaning is from " + scheduleStart + " to " + scheduleStop);
                             SimpleDateFormat formatter = new SimpleDateFormat(("hh:mm:ss a"));
                             Date date = new Date (System.currentTimeMillis());

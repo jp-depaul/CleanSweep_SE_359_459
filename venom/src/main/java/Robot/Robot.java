@@ -1,5 +1,6 @@
+package Robot;
+
 import java.awt.Point;
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -18,8 +19,8 @@ public class Robot {
   private int dirtLevel = 0;
   private boolean isFull = false;
   private int cleaningMode = 1;
-  private ArrayList<Point> stations;
   private Point currentPoint = ORIGIN;
+  private boolean hasMap = false;
 
   public Robot(VirtualFloor virtualFloor) {
     FLOOR = virtualFloor;
@@ -49,6 +50,7 @@ public class Robot {
     } while (true);
     returnAndCharge();
     LOGGER.logEndMap();
+    hasMap = true;
   }
 
   public void cleanFloor() throws ShutdownException, InterruptedException {
@@ -74,16 +76,7 @@ public class Robot {
       } else if (dirtLevel >= DIRT_CAPACITY) {
         isFull = true;
         returnAndCharge();
-        // TODO: replace empty functionality
-        while (isFull) {
-          Scanner s = new Scanner(System.in);
-          System.out.println("Dirt container is full: type EMPTY to empty vacuum");
-          String input = s.nextLine();
-          if (input.equals("EMPTY") || input.equals("empty")) {
-            dirtLevel = 0;
-            isFull = false;
-          }
-        }
+        emptyDirt();
       } else if (pathToMarked.isEmpty()) {
         clean();
         scan();
@@ -148,7 +141,6 @@ public class Robot {
 
     }
   }
-
   private void clean() throws ShutdownException {
     int floorLevel = CELL_MAP.get(currentPoint).getFloorLevel();
     if (cleaningMode != floorLevel) {
@@ -167,7 +159,6 @@ public class Robot {
       throw new ShutdownException("");
     }
   }
-
   private void moveTo(Point target) {
     LOGGER.logMove(currentPoint, target);
     chargeLevel -= ((double) CELL_MAP.get(currentPoint).getCost() + (double) CELL_MAP.get(target).getCost()) / 2;
@@ -176,10 +167,20 @@ public class Robot {
       LOGGER.logOutOfCharge(currentPoint);
     }
   }
-
   private void charge() {
     chargeLevel = CHARGE_CAPACITY;
     LOGGER.logCharge(currentPoint);
+  }
+  private void emptyDirt() {
+    while (isFull) {
+      Scanner s = new Scanner(System.in);
+      System.out.println("Dirt container is full: [e] to empty vacuum");
+      String input = s.nextLine();
+      if (input.equalsIgnoreCase("e") || input.equalsIgnoreCase("empty")) {
+        dirtLevel = 0;
+        isFull = false;
+      }
+    }
   }
 
   // Utility Functions
@@ -197,7 +198,6 @@ public class Robot {
     }
     return path;
   }
-
   private ArrayList<Point> getMinPathToPointWhereHelper(Predicate<Cell> condition, ArrayList<Point> path) {
     if (condition.test(CELL_MAP.get(path.get(path.size() - 1)))) {
       return path;
@@ -219,7 +219,6 @@ public class Robot {
     }
     return shortest;
   }
-
   public double getPathCost(ArrayList<Point> path, boolean addCurrentPoint) {
     double cost = 0.0;
     if (path.isEmpty()) {
@@ -235,7 +234,6 @@ public class Robot {
     }
     return cost;
   }
-
   private Point getAdjacentPoint(Point pos, Dir dir) {
     switch (dir) {
       case NORTH:
@@ -249,8 +247,9 @@ public class Robot {
     }
     return pos;
   }
-
+  public boolean hasMap() { return hasMap; }
   public boolean isFull() {
     return isFull;
   }
+  public void setLogging(boolean active) { LOGGER.printOnNewAction = active; }
 }

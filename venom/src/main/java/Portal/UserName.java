@@ -1,8 +1,6 @@
-package portal;
+package Portal;
 
-import java.sql.Time;
-
-public class userName {
+public class UserName {
     public String name, password, serialNumber, scheduleStart, scheduleStop;
     public void setUserName(String userName){this.name = userName;}
     public void setPassword(String password){this.password = password;}
