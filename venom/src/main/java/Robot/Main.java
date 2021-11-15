@@ -38,7 +38,8 @@ public class Main {
       System.out.println("Enter a number corresponding to one of the options below:");
       System.out.println("    (1) Do cleaning");
       System.out.println("    (2) Do mapping");
-      System.out.println("    (3) Quit");
+      System.out.println("    (3) Check status");
+      System.out.println("    (4) Quit");
       int response;
       try {
         response = Integer.parseInt(new Scanner(System.in).nextLine());
@@ -55,6 +56,10 @@ public class Main {
           main.doMapping();
           break;
         case 3:
+          System.out.println("Check status selected");
+          main.robot.getStatus();
+          break;
+        case 4:
           loop = false;
           break;
         default:

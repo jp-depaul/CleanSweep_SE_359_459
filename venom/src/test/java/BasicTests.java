@@ -10,7 +10,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class BasicTests {
-    private static final String PATH = System.getProperty("user.dir") + "/xml/FloorPlanB.xml";
+    private static final String PATH = System.getProperty("user.dir") + "/resources/FloorPlanB.xml";
     private static Robot robot;
     private static VirtualFloor virtualFloor;
 

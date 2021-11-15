@@ -1,7 +1,9 @@
 package Robot;
 
 import java.awt.Point;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.function.Predicate;
@@ -12,7 +14,7 @@ public class Robot {
   private final Logger LOGGER;
   private final HashMap<Point, Cell> CELL_MAP = new HashMap<Point, Cell>();
   private final Point ORIGIN = new Point(0, 0);
-  private final int CHARGE_CAPACITY = 250;
+  private final double CHARGE_CAPACITY = 250;
   private final int DIRT_CAPACITY = 50;
 
   private double chargeLevel = CHARGE_CAPACITY;
@@ -184,6 +186,14 @@ public class Robot {
   }
 
   // Utility Functions
+  public void getStatus() {
+    final String tab = "    ";
+    SimpleDateFormat formatter= new SimpleDateFormat("HH:mm:ss z");
+    System.out.println(tab + "Time: " + formatter.format(new Date(System.currentTimeMillis())));
+    System.out.println(tab + "Origin-relative position: [" + currentPoint.x + "," + currentPoint.y + "]");
+    System.out.println(tab + "Charge level: " + chargeLevel + "/" + CHARGE_CAPACITY);
+    System.out.println(tab + "Dirt level: " + dirtLevel + "/" + DIRT_CAPACITY);
+  }
   public void setPositionForTesting(Point p) {
     currentPoint = p;
   }
