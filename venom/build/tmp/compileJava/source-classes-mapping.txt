@@ -4,8 +4,8 @@ Robot/CellBorder.java
  Robot.CellBorder
 Portal/UserName.java
  Portal.UserName
-Portal/RegisterOrLogin.java
- Portal.RegisterOrLogin
+Robot/VirtualFloor.java
+ Robot.VirtualFloor
 Robot/Dir.java
  Robot.Dir
 Robot/Robot.java
@@ -20,7 +20,7 @@ Robot/Logger.java
  Robot.Logger
 Robot/Main.java
  Robot.Main
-Robot/VirtualFloor.java
- Robot.VirtualFloor
+Portal/RegisterOrLogin.java
+ Portal.RegisterOrLogin
 Portal/CleanSweepPortal.java
  Portal.CleanSweepPortal
